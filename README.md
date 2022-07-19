@@ -3,4 +3,4 @@ cubical-methods
 
 🛠️ WIP 🛠️
 
-[dieudonne.sty]: https://github.com/jonsterling/latex-dieudonne
+[dieudonne.sty](https://github.com/jonsterling/latex-dieudonne)
