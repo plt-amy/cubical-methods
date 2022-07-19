@@ -1,0 +1,50 @@
+This section serves as a brief recap to jog your memory of
+type-theoretic constructions; it also serves as an introduction to our
+particular syntactic conventions. For an in-depth explanation, we
+recommend \cite{Rijke:2022}.
+
+\begin{node}
+%
+Suppose we have a type \(A\) and a family of types \(B(x)\), varying
+over some \(x : A\). We are then free to form the type \((x : A) \to
+B(x)\) of \emph{functions from \(A\) to \(B(x)\)}, which we shall also
+refer to as the space of \emph{sections of \(B(x)\)}.
+%
+\end{node}
+
+\begin{node}
+%
+The inhabitants of a function type are constructed by the following
+rule: If we can derive \(e : B(x)\) in a context in which we have
+assumed some \(x : A\), then we may package this construction into \[
+  (\lambda x. e) : (x : A) \to B(x).
+\]
+
+Conversely, if we have \(f : (x : A) \to B(x)\) and \(a : A\), we may
+form the application \(f(a) : B(a)\). These are the quintessential
+examples of \emph{introduction and elimination} rules.
+%
+\end{node}
+
+\begin{node}
+%
+The computational content of type theory comes from a third kind of
+rule, separate from introductions and eliminations, which prescribe how
+they should interact. In the case of the function type, our introduction
+rule is the \(\lambda\)-form, and our elimination rule is application
+--- so that we must prescribe what happens when a \(\lambda\)-form is
+applied.
+
+The computation rule here is called \(\beta\)-reduction, and we mandate
+that
+\[
+  ((\lambda x. e) a) \doteq e[x/a] : B(a).
+\]
+%
+\end{node}
+
+\begin{remark}
+We adopt \cite{Rijke:2022}'s convention of using \(\doteq\) for the
+judgemental equality. This is a notion of equality \emph{external} to
+type theory.
+\end{remark}

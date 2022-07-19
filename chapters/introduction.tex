@@ -1,0 +1,71 @@
+\begin{node}
+%
+Homotopy type theory\marginnote{HoTT, for short.} is a relatively modern
+foundational system for mathematics, which can be succinctly described
+as a \emph{synthetic theory of \(\infty\)-groupoids}. In more words,
+this means that the ``ambient objects'' we write mathematics in terms of
+are intrinsically higher-categorical, or intrinsically
+\emph{homotopical}.
+%
+\end{node}
+
+\begin{node}
+%
+Consequently, HoTT presents a unique opportunity to do homotopy theory
+\emph{on its own terms}, studying \(\infty\)-groupoids \emph{as they
+are} rather than studying an \emph{encoding}, e.g. the Kan complex
+encoding. This is the tradeoff of synthetic mathematics: we lose the
+ability to ``peek into" the encoding, but we gain the benefit of having
+our theorems automatically apply to anything which is sufficiently
+\(\infty\)-groupoid\emph{-like}.
+%
+\end{node}
+
+\begin{node}\label{node:hott-constructive}
+%
+At the same time, HoTT is\marginnote{We note that HoTT can be
+consistently extended with classical principles.} a \emph{constructive}
+system of mathematics, meaning that proofs are \emph{computable}, or
+\emph{effective}. A constructive proof automatically doubles as an
+algorithm, meaning that, for example, a proof that there are finitely
+many groups of given order \emph{automatically} doubles as a procedure
+for enumerating said groups.
+%
+\end{node}
+
+\begin{node}
+%
+In HoTT, every construction we perform (and every theorem we prove) is
+automatically \emph{isomorphism-invariant}, meaning that a proof of the
+theorem "there are finitely many groups of order \(n\)" is automatically
+a computable procedure which enumerates finite groups of order \(n\)
+\emph{up to isomorphism}.
+%
+\end{node}
+
+\begin{node}
+%
+The mathematical principle that makes HoTT ``tick'' is
+\emph{univalence}, which is commonly introduced in natural language as
+saying that "equivalent types are identical". We prefer \emph{not} to
+use this slogan, since it could be read as a skeletality condition
+(saying that there are no non-trivial equivalences of types), when the
+opposite is true: we have expanded the definition of \emph{identical} to
+match \emph{equivalent}.
+
+The univalence principle is often still referred to as the univalence
+\emph{axiom}, and indeed it was phrased as an axiom in
+\cite{UF:2013}.
+\marginnote{Consequently, the formal system presented
+there is sometimes called ``axiomatic HoTT.''} This is problematic
+because the introduction of axioms to a type-theoretic system destroys
+\emph{canonicity}, the meta-theoretic property alluded to in
+\cref{node:hott-constructive}.
+
+This means that, if we want a foundational system where proofs are
+automatically \emph{effective} and automatically
+\emph{isomorphism-invariant} (or automatically \emph{homotopical}), we
+need a way to \emph{prove} the univalence principle, rather than
+asserting it as an axiom.
+%
+\end{node}

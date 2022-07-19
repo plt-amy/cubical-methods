@@ -1,0 +1,214 @@
+\documentclass[oneside,leqno,openright]{memoir}
+
+\usepackage{mathpazo}
+\usepackage{tgpagella}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{blindtext}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{marginfix}
+\usepackage{ragged2e}
+\usepackage{setspace}
+\usepackage{xifthen}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{quiver}
+
+\usepackage{hyphenat}
+\usepackage[backref=true,
+            style=alphabetic,
+            autolang=hyphen,
+            backend=biber,
+            bibencoding=utf8,
+            sorting=nty]{biblatex}
+
+% hyperref should be the package loaded last
+\usepackage[bookmarksnumbered=true,
+            bookmarksdepth=2,
+            bookmarksopenlevel=2,
+            pdfborderstyle=,
+            unicode]{hyperref}
+% - except for cleveref!
+\usepackage[capitalize]{cleveref}
+% To get unicode in pdfinfo, we need to use hypersetup, not package options
+\hypersetup{
+  pdfauthor={Amélia Liao},
+  pdftitle={Cubical Methods for Homotopy Type Theory},
+  pdfsubject={Mathematics},
+  pdfkeywords={type theory, category theory, univalence axiom}}
+\usepackage[chapters]{dieudonne}
+
+%%% Tufte font size
+%%
+% Set the font sizes and baselines to match Tufte's books
+\makeatletter
+\renewcommand\normalsize{%
+   \@setfontsize\normalsize\@xpt{14}%
+   \abovedisplayskip 5\p@ \@plus2\p@ \@minus5\p@
+   \abovedisplayshortskip \z@ \@plus3\p@
+   \belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
+   \belowdisplayskip \abovedisplayskip
+   \let\@listi\@listI}
+\normalbaselineskip=14pt
+\normalsize
+\renewcommand\small{%
+   \@setfontsize\small\@ixpt{12}%
+   \abovedisplayskip 8.5\p@ \@plus3\p@ \@minus4\p@
+   \abovedisplayshortskip \z@ \@plus2\p@
+   \belowdisplayshortskip 4\p@ \@plus2\p@ \@minus2\p@
+   \def\@listi{\leftmargin\leftmargini
+               \topsep 4\p@ \@plus2\p@ \@minus2\p@
+               \parsep 2\p@ \@plus\p@ \@minus\p@
+               \itemsep \parsep}%
+   \belowdisplayskip \abovedisplayskip
+}
+\renewcommand\footnotesize{%
+   \@setfontsize\footnotesize\@viiipt{10}%
+   \abovedisplayskip 6\p@ \@plus2\p@ \@minus4\p@
+   \abovedisplayshortskip \z@ \@plus\p@
+   \belowdisplayshortskip 3\p@ \@plus\p@ \@minus2\p@
+   \def\@listi{\leftmargin\leftmargini
+               \topsep 3\p@ \@plus\p@ \@minus\p@
+               \parsep 2\p@ \@plus\p@ \@minus\p@
+               \itemsep \parsep}%
+   \belowdisplayskip \abovedisplayskip
+}
+\renewcommand\scriptsize{\@setfontsize\scriptsize\@viipt\@viiipt}
+\renewcommand\tiny{\@setfontsize\tiny\@vpt\@vipt}
+\renewcommand\large{\@setfontsize\large\@xipt{15}}
+\renewcommand\Large{\@setfontsize\Large\@xiipt{16}}
+\renewcommand\LARGE{\@setfontsize\LARGE\@xivpt{18}}
+\renewcommand\huge{\@setfontsize\huge\@xxpt{30}}
+\renewcommand\Huge{\@setfontsize\Huge{24}{36}}
+\makeatother
+
+%%% Page layout
+\stockaiv
+\pageaiv
+\settypeblocksize{*}{28pc}{*}
+\setlrmargins{1in}{*}{*}
+\setulmarginsandblock{1in}{1in}{*}
+\setheadfoot{\baselineskip}{2\baselineskip}
+\setheaderspaces{*}{2\baselineskip}{*}
+\setmarginnotes{2pc}{11pc}{\baselineskip}
+\checkandfixthelayout
+\raggedbottom
+\setlength{\parindent}{1em}
+
+%%% Tufte margins
+\marginparmargin{right}
+\footnotesinmargin
+\renewcommand*{\thefootnote}{\arabic{footnote}}
+\setlength{\footmarkwidth}{-1sp}
+\setlength{\footmarksep}{0pt}
+\renewcommand{\foottextfont}{\footnotesize\RaggedRight}
+\newlength{\extrawidth}
+\setlength{\extrawidth}{\marginparsep}
+\addtolength{\extrawidth}{\marginparwidth}
+\newenvironment{fullwidth}{\begin{adjustwidth}{0mm}{-\extrawidth}%
+  \blockmargin}%
+  {\unblockmargin\end{adjustwidth}}
+\setmpjustification{\RaggedLeft}{\RaggedRight}%
+\newcommand*{\marginnote}[2][]{%
+  \ifthenelse{\isempty{#1}}{\relax}{\mparshift{#1}}%
+  \marginpar{\mpjustification\normalfont\footnotesize #2}}
+\setmarginfloatcaptionadjustment{figure}{\captionnamefont{\footnotesize\scshape}%
+  \captiontitlefont{\footnotesize}\captionstyle{\mpjustification}}
+\sidecapmargin{right}
+\setsidecappos{t}
+\renewcommand*{\sidecapstyle}{\captionnamefont{\footnotesize\scshape}%
+  \captiontitlefont{\footnotesize}\captionstyle{\mpjustification}}
+\newlength{\oneline}
+\setlength{\oneline}{\baselineskip}
+
+%%% Table of contents
+\renewcommand*{\cftchapterfont}{\itshape\LARGE}
+% \renewcommand*{\cftchapterleader}{\raggedleft}
+\renewcommand*{\cftchapterformatpnum}[1]{\kern1pc\normalfont\LARGE #1}
+% \renewcommand*{\cftchapterafterpnum}{\cftparfillskip}
+\renewcommand*{\cftdot}{ }
+\renewcommand*{\chapternumberline}[1]{\llap{#1\kern2pc}}
+\renewcommand*{\cftsectionfont}{\normalfont}
+% \renewcommand*{\cftsectionleader}{\enskip\textperiodcentered}
+\renewcommand*{\cftsectionformatpnum}[1]{\enskip\normalfont #1}
+\renewcommand*{\cftsectionafterpnum}{\cftparfillskip}
+\setrmarg{0pt plus 1fil}
+\setlength{\cftsectionnumwidth}{3em}
+\setlength{\cftsectionindent}{0pt}
+\setpnumwidth{2pc}
+\maxtocdepth{section}
+
+\chapterstyle{hangnum}
+\renewcommand*{\chaptitlefont}{\huge\itshape}
+
+\setlength\DieudonneNodeIndent{0pt}
+
+\ExplSyntaxOn
+\NewDocumentCommand\thetitlepage{}{
+  \clearpage
+  \thispagestyle{empty}
+
+  \vspace*{2.5ex}
+
+  {
+    \Huge
+    \begin{flushleft}
+      Cubical\ Methods \\[-1ex]
+      \phantom{Cubica}{\huge \itshape for}\\[-1ex]
+      Homotopy\ Type\ Theory
+    \end{flushleft}
+  }
+
+  \vspace{0.625ex}
+
+  {
+    \LARGE
+    \begin{flushleft}
+      {\itshape \theauthor}
+    \end{flushleft}
+  }
+
+
+  \clearpage
+}
+\ExplSyntaxOff
+
+\def\ordinaryequals{\mathchar`\=}
+\newcommand*{\eq}{\mathrel{\ordinaryequals}}
+% \newtocommand makes a new command for an arrow with a symbol
+% on top that looks better than \xrightarrow
+\newcommand{\doalign}[2]{%
+ {\vbox{\offinterlineskip\ialign{\hfil##\hfil\cr$#1$\cr$#2$\cr}}}%
+}
+\newcommand{\newtocommand}[2]{%
+  \expandafter\newcommand\csname #1\endcsname{\mathrel{\mathchoice%
+    {\doalign{\scriptstyle #2\,}{\displaystyle\to}}%
+    {\doalign{\scriptstyle #2\,}{\textstyle\to}}%
+    {\doalign{\scriptscriptstyle #2\,}{\scriptstyle\to}}%
+    {\doalign{\scriptscriptstyle #2\,}{\scriptscriptstyle\to}}%
+}}}
+\newtocommand{is}{\ordinaryequals}
+
+\newcommand*{\mono}{\hookrightarrow}
+
+\newcommand*{\QQ}{\mathbb{Q}}
+\newcommand*{\ZZ}{\mathbb{Z}}
+\newcommand*{\NN}{\mathbb{N}}
+\newcommand*{\RR}{\mathbb{R}}
+\newcommand*{\II}{\mathbb{I}}
+
+\newtheorem{theorem}[node]{Theorem}
+
+\theoremstyle{definition}
+\newtheorem{defn}[node]{Definition}
+\newtheorem{misdefn}[node]{Mis-definition}
+\newtheorem{corollary}[node]{Corollary}
+\newtheorem{example}[node]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[node]{Remark}

@@ -1,0 +1,60 @@
+\begin{node}
+%
+It is instructive to introduce the notion of \emph{universes} by
+comparing them to the slightly more familiar notion of \emph{subobject
+classifier}. For the start of this section, let us assume excluded
+middle for simplicity.
+%
+\end{node}
+
+\begin{node}
+%
+Suppose we have a set \(A\) and some injective function \(m : B \mono
+A\)\marginnote{Even with excluded middle, we will stick to a structural
+conception of sets.}, and consider some element \(x : 1 \to A\). We can
+form the set
+\[
+  \{ y : B\ |\ m(y) = x \},
+\]
+i.e., the set of \emph{elements of \(B\) which \(m\) maps to \(x\)}.
+%
+\end{node}
+
+\begin{node}
+%
+If we would like an arrow \(m : B \to A\) to indeed represent a subset
+of \(A\), we would like \emph{being in the image of \(m\)} to be a
+true-false statement: either some \(x : 1 \to A\) comes from some \(y :
+B\) or it doesn't. There should be no possiblity for \(x : 1 \to A\) to
+be the image of distinct \(y, z : 1 \to B\).
+%
+\end{node}
+
+% \[
+%   \begin{tikzcd}
+%     {B\times_A1} && B \\
+%     \\
+%     1 && {A.}
+%     \arrow["m"', hook, from=1-3, to=3-3]
+%     \arrow["x", from=3-1, to=3-3]
+%     \arrow[from=1-1, to=3-1]
+%     \arrow[from=1-1, to=1-3]
+%     \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=3-3]
+%   \end{tikzcd}
+% \]
+
+% Since monomorphisms are stable under pullback, we conclude that the
+% arrow \(! : B \times_A 1 \to 1\) is a monomorphism, hence injective.
+% %
+% \end{node}
+
+% \begin{node}
+% %
+% For any two maps \(f, g : X \to B \times_A 1\), we have \(\text{!} \circ
+% f = \text{!} \circ g\) since \(1\) is terminal. But since \(! : B
+% \times_A 1 \to 1\) is monic, we must have had \(f = g\) to begin with.
+
+% This immediately implies that any two points \(f, g : 1 \to B\times_A
+% 1\) are equal.
+% %
+% \end{node}

@@ -1,0 +1,41 @@
+\begin{node}
+%
+Readers familiar with homotopy theory and other branches of higher
+category theory may find the use of higher cubes, as opposed to higher
+simplices, unusual.
+%
+\end{node}
+
+\begin{node}
+%
+Our choice is motivated by the syntax of type theory. Terms and types
+exist in \emph{contexts}, which are semantically represented by finite
+products. Thus, type theory has a lightweight way of dealing with the
+structure of iterated products: using names and contexts.
+
+Thus, using a geometric shape for higher structures which plays well
+with products essentially gives us a shortcut for representing the
+geometry of higher paths --- just use contexts.
+%
+\end{node}
+
+\begin{node}
+%
+A mathematical justification of this fact is given by the fact that
+\(\square_\mathrm{cart}\), the cube category of \cite{ABCFHL:2021}, is
+the free Cartesian monoidal category on a bipointed object.
+
+Elaborating: If \(\mathcal{C}\) is a Cartesian monoidal category
+equipped with a choice of object \(O\) and morphisms \(l, r : 1 \to O\),
+then there exists an essentially unique finite-product-preserving
+functor \(\square_\mathrm{cart} \to \mathcal{C}\) which sends the
+interval to \(O\), sends the left endpoint to \(l\), and the right
+endpoint to \(r\).
+%
+\end{node}
+
+\begin{remark}
+In contrast, the simplex category is well-suited for higher category
+theory because it is a universal model of \emph{composition}: \(\Delta\)
+is the free monoidal category equipped with a monoid object.
+\end{remark}
