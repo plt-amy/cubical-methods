@@ -1,0 +1,81 @@
+\begin{node}
+%
+The solution is to consider our objects living not in a 1-category, but
+in an \(\infty\)-category\marginnote{Note that wherever we say
+\(\infty\)-category, we mean \((\infty,1)\)-category.}: there, our
+points can have their own \emph{auto-2-morphisms}, and those can have
+their own auto-3-morphisms, up to infinity. The \(\infty\)-categories we
+are interested in will all have \emph{enough object classifiers}.
+%
+\end{node}
+
+\begin{defn}\label{defn:enough-universes}
+An \(\infty\)-category \(\mathcal{C}\) has \emph{enough object
+classifiers}, or \emph{enough universes}, if for every regular cardinal
+\(\kappa\), there is an object \(\Type_\kappa\) which classifies the
+functor
+\[
+X \mapsto \Core_{\le \kappa}(\mathcal{C}/X),
+\]
+which sends each object \(X\) to (the core of) the
+sub-\(\infty\)-category \(\mathcal{C}/X\) consisting of the morphisms
+with \(\kappa\)-small fibres.
+\end{defn}
+
+\begin{node}
+%
+The definition above is external to type theory, but we can internalise
+it through the fine art of handwaving\marginnote{Another way of putting
+this is that \cref{defn:enough-universes} is semantic, but we'd like a
+\emph{syntactic} criterion}: We can consider the objects of the
+category, up to handwaving, to be our "types". Then
+\cref{defn:enough-universes} says that, for every regular cardinal
+\(\kappa\), we have a type \(\Type_\kappa\) whose \emph{elements} \(T :
+\Type_\kappa\) are isomorphic to \(\kappa\)-small types.
+
+We call a type like \(\Type_\kappa\), whose elements represent types, a
+\emph{universe}.
+%
+\end{node}
+
+\begin{node}
+%
+Abstracting away the administrative setup of regular cardinals, we will
+assume that we have a countable set of symbols \(\ell, \ell_1, \dots\)
+which we will call "levels", and we have a corresponding tower of
+universes
+\[
+  \Type_{\ell} : \Type_{\ell_1} : \Type{\ell_2} : ...
+\]
+%
+\end{node}
+
+\begin{remark}
+Our universes are not \emph{cumulative}, i.e., if we have a code \(A :
+\Type_{\ell}\), then it is not automatically the case that the judgement
+\(A : \Type_{\ell'}\) holds for \(\ell' > \ell\).
+\end{remark}
+
+\begin{node}
+%
+Additionally, our universes are all \emph{univalent}: there is a
+canonical equivalence between the type of identifications in
+\(\Type_\ell\) and the type of equivalences between \(\ell\)-small
+types. \emph{Proving} this, rather than asserting it, is one of the
+goals of cubical type theory.
+%
+\end{node}
+
+\begin{remark}
+The subobject classifier \(\Omega\) in a topos can also be seen as a
+universe, with a very strict bound on cardinality: It classifies the
+morphisms with \(\{*\}\)-small fibres.
+\end{remark}
+
+\begin{remark}
+Our type theory does not have a "universe of all propositions," so that
+every level \(\ell\) has an associated universe \(\Prop_\ell\) of
+"\(\ell\)-small types with at most one element". Thus, the levels
+\(\ell\) do not correspond to any particular assignment of
+cardinalities.
+\end{remark}

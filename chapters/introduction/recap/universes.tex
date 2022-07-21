@@ -9,52 +9,155 @@ middle for simplicity.
 
 \begin{node}
 %
-Suppose we have a set \(A\) and some injective function \(m : B \mono
-A\)\marginnote{Even with excluded middle, we will stick to a structural
-conception of sets.}, and consider some element \(x : 1 \to A\). We can
-form the set
-\[
-  \{ y : B\ |\ m(y) = x \},
-\]
-i.e., the set of \emph{elements of \(B\) which \(m\) maps to \(x\)}.
+We can consider \emph{any} function \(f : A \to B\) between sets as
+being a \emph{family of sets} indexed, confusingly, by the elements of
+\(B\).  The change in direction is because the set associated by the
+family to each element \(x : B\) is the \emph{fibre over \(x\)}, the set
+\(f^*(x) = \{ y : A \mid f(y) = x \}.\)
+%
+\end{node}
+
+\begin{remark}
+When talking about sets and functions, what we called a "fibre" is more
+commonly called the \emph{preimage} of \(x\). We will stick with the
+homotopically-inspired terminology for consistency.
+\end{remark}
+
+\begin{node}
+%
+We may phrase the idea of fibres in a structural way, without mention of
+elements, using the idea of \emph{pullbacks}. The fibre \(f^*(x)
+\subseteq A\) is equivalently the result of pulling \(f : A \to B\) back
+along an element \(x : \{*\} \to B\).
+
+\[\begin{tikzcd}
+  {\{*\} \times_B A} && A \\
+  \\
+  \{*\} && B
+  \arrow["f"', from=1-3, to=3-3]
+  \arrow["x"', from=3-1, to=3-3]
+  \arrow[from=1-1, to=3-1]
+  \arrow["{f^*(x)}"', from=1-1, to=1-3]
+  \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=3-3]
+\end{tikzcd}\]
 %
 \end{node}
 
 \begin{node}
 %
-If we would like an arrow \(m : B \to A\) to indeed represent a subset
-of \(A\), we would like \emph{being in the image of \(m\)} to be a
-true-false statement: either some \(x : 1 \to A\) comes from some \(y :
-B\) or it doesn't. There should be no possiblity for \(x : 1 \to A\) to
-be the image of distinct \(y, z : 1 \to B\).
+Now suppose that \(f : A \to B\) is the function associated with a
+subset inclusion, e.g. by letting \(A\) be "the set of even naturals",
+\(B\) be \(\NN\) itself, and \(f\) be the map which forgets the
+even-ness of a given number.
+
+Investigating the family associated with this map is instructive: The
+fibre over \(2\) is "the set of even numbers equal to two", i.e. the
+singleton set containing \(2\). But the fibre over \(3\) is "the set of
+even numbers equal to three", which is uninhabited.
+
+Generalising, we see that our specific function \(f : A \to B\) had the
+property of being \emph{injective}\marginnote{In the category of sets,
+being injective is the same as being a \emph{monomorphism}. This latter
+property is what defines subobject classifiers in general.}, and that
+any injective function, and \emph{only} the injective functions, will
+have this same behaviour for its family of fibres (i.e., the fibre over
+any point will have \emph{at most one} element).
 %
 \end{node}
 
-% \[
-%   \begin{tikzcd}
-%     {B\times_A1} && B \\
-%     \\
-%     1 && {A.}
-%     \arrow["m"', hook, from=1-3, to=3-3]
-%     \arrow["x", from=3-1, to=3-3]
-%     \arrow[from=1-1, to=3-1]
-%     \arrow[from=1-1, to=1-3]
-%     \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=3-3]
-%   \end{tikzcd}
-% \]
+\begin{node}
+%
+We have characterised the injective functions in terms of the behaviour
+of their associated family: A natural next question to ask if there is
+an object of the category of sets to serve as the \emph{codomain} for
+these families: Is there some object \(X\) such that the maps \(p : B
+\to X\) correspond to injective functions \(A \mono
+B\)?\marginnote{Another way to observe that the fibres of a monomorphism
+have \emph{at most one} element is to note that monomorphisms are closed
+under pullback: If \(f : A \mono B\) is monic, then so is the map
+\(\{*\} \times_B A \to \{*\}\).}
 
-% Since monomorphisms are stable under pullback, we conclude that the
-% arrow \(! : B \times_A 1 \to 1\) is a monomorphism, hence injective.
-% %
-% \end{node}
+The answer is yes, and this correspondence is very familiar: If we have
+a subset \(A \subseteq B\), we can associate to each element \(x : B\)
+the Boolean-valued function
 
-% \begin{node}
-% %
-% For any two maps \(f, g : X \to B \times_A 1\), we have \(\text{!} \circ
-% f = \text{!} \circ g\) since \(1\) is terminal. But since \(! : B
-% \times_A 1 \to 1\) is monic, we must have had \(f = g\) to begin with.
+\begin{equation*}
+  \chi(x) = \begin{cases*}
+    1 & if $x \in A$ \\
+    0 & otherwise,
+  \end{cases*}
+\end{equation*}
 
-% This immediately implies that any two points \(f, g : 1 \to B\times_A
-% 1\) are equal.
-% %
-% \end{node}
+and if we have such a Boolean-valued function, we recover a subset
+\[
+\{x : A \mid \chi(x) = 1\}.
+\]
+%
+\end{node}
+
+\begin{node}
+%
+Rephrasing this structurally,\marginnote{And still assuming excluded
+middle} we have found a \emph{generic injection}: We have a particular
+set (the set \(\{0,1\}\) of Booleans) and an injection \(\mathrm{true} :
+\{1\} \mono \{0,1\}\), such that any other injection is an "instance" of
+\(\mathrm{true}\).
+%
+\end{node}
+
+\begin{node}
+%
+More precisely, given an injection \(f : A \mono B\), we have a unique
+map \(\chi_f\) such that the diagram
+\[\begin{tikzcd}
+  A && {\{*\}} \\
+  \\
+  B && {\{0,1\}}
+  \arrow["{\mathrm{true}}", from=1-3, to=3-3]
+  \arrow["{\chi_f}"', from=3-1, to=3-3]
+  \arrow["f"', from=1-1, to=3-1]
+  \arrow[from=1-1, to=1-3]
+  \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=3-3]
+\end{tikzcd}\] is a pullback square, as indicated: given \emph{any}
+injection, we have a specific map \(\chi_f\) such that the fibre of
+\(\chi_f\) over "true" recovers the subset \(A\).
+%
+\end{node}
+
+\begin{node}
+%
+Our focus on fibres and pullbacks so far has been instructive for
+calculation but is a hindrance to generalisation: A cleaner way of
+characterising the subobject classifier is to say it represents the
+functor sending each object to its \emph{poset of subobjects}: We have a
+natural isomorphism
+\[
+  \hom(-, \Omega) \cong \mathrm{Sub}(-).
+\]
+The reason pullbacks get involved is as part of the construction of the
+functorial action of \(\mathrm{Sub}\).
+%
+\end{node}
+
+\begin{node}
+%
+Inspired by this success, we might want to venture further: Is there a
+generic map? Put better, is there an object \(U\) which represents the
+functor \(x \mapsto \mathrm{Sets}/x\), i.e., classifying
+\emph{arbitrary} families of sets?
+
+Sadly, there is not, and the reason for failure is twofold: Initially,
+we have the Russellian paradoxes of \emph{the set of all sets}. If we
+had such an object, then it would have to classify the family \(U \to
+\{*\}\), i.e., it would have to be "an element of itself". But there is
+a more subtle objection: there is a \emph{category} of sets (which is
+equivalently the slice \(\mathrm{Sets}/\{*\}\)), but there is a
+\emph{set} of maps \(\{*\} \to U\).
+
+Consider, for example, the object \(\{0,1\}\) as a family over
+\(\{*\}\). It has an automorphism \(x \mapsto 1 - x\), which we would
+like to (and have to!) classify, but the corresponding point
+\(\chi_{\{0,1\}} : 1 \to U\) has no reasonable notion of automorphism:
+it's a morphism in a \(1\)-category!
+%
+\end{node}
